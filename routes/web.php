@@ -42,4 +42,23 @@ Route::get('/test-storage', function() {
         ]
     ], 200, [], JSON_PRETTY_PRINT);
 });
+Route::get('/', function () {
+    return response()->json([
+        'message' => 'Vente Ntsika API Server',
+        'status' => 'online',
+        'version' => '1.0',
+        'timestamp' => now()
+    ]);
+});
 
+// Redirection vers API
+Route::get('/api', function () {
+    return response()->json([
+        'message' => 'Vente Ntsika API is working!',
+        'endpoints' => [
+            'test' => '/api/test',
+            'auth' => '/api/login',
+            'products' => '/api/produits'
+        ]
+    ]);
+});
